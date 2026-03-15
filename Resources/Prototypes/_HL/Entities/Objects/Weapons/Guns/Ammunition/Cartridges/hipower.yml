@@ -5,6 +5,7 @@
   components:
   - type: CartridgeAmmo
     proto: Bullet9x19mmHiPower
+    deleteOnSpawn: true
   - type: Sprite
     layers:
       - state: base
@@ -22,6 +23,7 @@
   components:
   - type: CartridgeAmmo
     proto: Bullet9x19mmFlechette
+    deleteOnSpawn: true
   - type: Sprite
     layers:
       - state: base
@@ -39,6 +41,7 @@
   components:
   - type: CartridgeAmmo
     proto: Bullet45_ACPHiPower
+    deleteOnSpawn: true
   - type: Sprite
     layers:
       - state: base
@@ -56,6 +59,7 @@
   components:
   - type: CartridgeAmmo
     proto: Bullet45_ACPFlechette
+    deleteOnSpawn: true
   - type: Sprite
     layers:
       - state: base
@@ -73,6 +77,7 @@
   components:
   - type: CartridgeAmmo
     proto: Bullet46x30mmHiPower
+    deleteOnSpawn: true
   - type: Sprite
     layers:
       - state: base
@@ -90,6 +95,7 @@
   components:
   - type: CartridgeAmmo
     proto: Bullet46x30mmFlechette
+    deleteOnSpawn: true
   - type: Sprite
     layers:
       - state: base
@@ -107,6 +113,7 @@
   components:
   - type: CartridgeAmmo
     proto: Bullet45_magnumHiPower
+    deleteOnSpawn: true
   - type: Sprite
     layers:
       - state: base
@@ -124,6 +131,7 @@
   components:
   - type: CartridgeAmmo
     proto: Bullet45_magnumFlechette
+    deleteOnSpawn: true
   - type: Sprite
     layers:
       - state: base
@@ -141,6 +149,7 @@
   components:
   - type: CartridgeAmmo
     proto: Bullet556x45mmHiPower
+    deleteOnSpawn: true
   - type: Sprite
     layers:
       - state: base
@@ -158,6 +167,7 @@
   components:
   - type: CartridgeAmmo
     proto: Bullet556x45mmFlechette
+    deleteOnSpawn: true
   - type: Sprite
     layers:
       - state: base
@@ -175,6 +185,7 @@
   components:
   - type: CartridgeAmmo
     proto: Bullet57x28mmHiPower
+    deleteOnSpawn: true
   - type: Sprite
     layers:
       - state: base
@@ -192,6 +203,7 @@
   components:
   - type: CartridgeAmmo
     proto: Bullet57x28mmFlechette
+    deleteOnSpawn: true
   - type: Sprite
     layers:
       - state: base
@@ -209,6 +221,7 @@
   components:
   - type: CartridgeAmmo
     proto: Bullet762x39mmHiPower
+    deleteOnSpawn: true
   - type: Sprite
     layers:
       - state: base
@@ -226,6 +239,7 @@
   components:
   - type: CartridgeAmmo
     proto: Bullet762x39mmFlechette
+    deleteOnSpawn: true
   - type: Sprite
     layers:
       - state: base
@@ -243,6 +257,7 @@
   components:
   - type: CartridgeAmmo
     proto: Bullet762x51mmHiPower
+    deleteOnSpawn: true
   - type: Sprite
     layers:
       - state: base
@@ -260,6 +275,7 @@
   components:
   - type: CartridgeAmmo
     proto: Bullet762x51mmFlechette
+    deleteOnSpawn: true
   - type: Sprite
     layers:
       - state: base
@@ -277,6 +293,7 @@
   components:
   - type: CartridgeAmmo
     proto: Bullet762x54mmRHiPower
+    deleteOnSpawn: true
   - type: Sprite
     layers:
       - state: base
@@ -294,6 +311,7 @@
   components:
   - type: CartridgeAmmo
     proto: Bullet762x54mmRFlechette
+    deleteOnSpawn: true
   - type: Sprite
     layers:
       - state: base
@@ -311,6 +329,7 @@
   components:
   - type: CartridgeAmmo
     proto: Bullet8x65mmSKRHiPower
+    deleteOnSpawn: true
   - type: Sprite
     layers:
       - state: base
@@ -328,6 +347,7 @@
   components:
   - type: CartridgeAmmo
     proto: Bullet8x65mmSKRFlechette
+    deleteOnSpawn: true
   - type: Sprite
     layers:
       - state: base
