@@ -38,7 +38,7 @@
   parent: BaseCartridge45_ACP
   components:
   - type: CartridgeAmmo
-    proto: Bullet45_ACPHiPower
+    proto: Bullet9x19mmHiPower
   - type: Sprite
     layers:
       - state: base
