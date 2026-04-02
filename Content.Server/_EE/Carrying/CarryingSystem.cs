@@ -29,6 +29,7 @@ using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Nyanotrasen.Item.PseudoItem;
 using Content.Shared.Storage;
+using Content.Shared._HL.Traits.Physical;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Server.GameObjects;
@@ -235,7 +236,6 @@ namespace Content.Server.Carrying
 
         private void OnDoAfter(EntityUid uid, CarriableComponent component, CarryDoAfterEvent args)
         {
-            component.CancelToken = null;
             if (args.Handled || args.Cancelled
                 || !CanCarry(args.Args.User, uid, component))
                 return;
@@ -243,8 +243,13 @@ namespace Content.Server.Carrying
             Carry(args.Args.User, uid);
             args.Handled = true;
         }
+
         private void StartCarryDoAfter(EntityUid carrier, EntityUid carried, CarriableComponent component)
         {
+            // Prevent duplicate attempts properly
+            if (HasComp<CarryingComponent>(carrier) || HasComp<BeingCarriedComponent>(carried))
+                return;
+
             if (!TryComp<PhysicsComponent>(carrier, out var carrierPhysics)
                 || !TryComp<PhysicsComponent>(carried, out var carriedPhysics)
                 || carriedPhysics.Mass > carrierPhysics.Mass * 2f)
@@ -264,8 +269,6 @@ namespace Content.Server.Carrying
                 component.MinPickupDuration,
                 component.MaxPickupDuration));
             // End Frontier
-
-            component.CancelToken = new CancellationTokenSource();
 
             var ev = new CarryDoAfterEvent();
             var args = new DoAfterArgs(EntityManager, carrier, duration, ev, carried, target: carried) // Frontier: length<duration
@@ -346,16 +349,64 @@ namespace Content.Server.Carrying
         public bool CanCarry(EntityUid carrier, EntityUid carried, CarriableComponent? carriedComp = null)
         {
             if (!Resolve(carried, ref carriedComp, false)
-                || carriedComp.CancelToken != null
                 || !HasComp<MapGridComponent>(Transform(carrier).ParentUid)
                 || HasComp<BeingCarriedComponent>(carrier)
                 || HasComp<BeingCarriedComponent>(carried)
-                || !TryComp<HandsComponent>(carrier, out var hands)
-                || hands.CountFreeHands() < carriedComp.FreeHandsRequired)
+                || !TryComp<HandsComponent>(carrier, out var hands))
+                return false;
+
+            // HardLight start
+            var carrierTier = GetCarrySizeTier(carrier);
+            var carriedTier = GetCarrySizeTier(carried);
+
+            var requiredHands = carriedComp.FreeHandsRequired;
+            if (carriedTier == CarrySizeTier.Tiny && carrierTier >= CarrySizeTier.Normal)
+                requiredHands = Math.Min(requiredHands, 1);
+
+            if (hands.CountFreeHands() < requiredHands)
+                return false;
+
+            // Big can only be carried by Big.
+            if (carriedTier == CarrySizeTier.Big && carrierTier != CarrySizeTier.Big)
+                return false;
+
+            // Tiny can only carry Tiny.
+            if (carrierTier == CarrySizeTier.Tiny && carriedTier != CarrySizeTier.Tiny)
+                return false;
+
+            // Small can carry Small or Tiny only.
+            if (carrierTier == CarrySizeTier.Small && carriedTier > CarrySizeTier.Small)
+            // HardLight end
                 return false;
 
             return true;
         }
+
+        // HardLight start
+        // Determine the carry size tier of an entity based on its components.
+        // This is used to enforce certain carrying restrictions, such as big entities only being carriable by other big entities.
+        private CarrySizeTier GetCarrySizeTier(EntityUid uid)
+        {
+            if (HasComp<BigWeaponHandlingComponent>(uid))
+                return CarrySizeTier.Big;
+
+            if (HasComp<SmallWeaponHandlingComponent>(uid))
+                return CarrySizeTier.Small;
+
+            if (HasComp<TinyWeaponHandlingComponent>(uid))
+                return CarrySizeTier.Tiny;
+
+            return CarrySizeTier.Normal;
+        }
+
+        private enum CarrySizeTier
+        {
+            Tiny = 0,
+            Small = 1,
+            Normal = 2,
+            Big = 3,
+        }
+        // HardLight end
 
         public override void Update(float frameTime)
         {
