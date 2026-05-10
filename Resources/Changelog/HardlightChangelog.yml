@@ -3754,3 +3754,11 @@ Entries:
         thrown at them.
   id: 403
   time: '2026-05-10T10:50:33.0000000+00:00'
+- author: NotLivyathan
+  changes:
+    - type: Fix
+      message: >-
+        Characters with the Trap Avoider trait should no longer have seizures
+        when walking on surfaces that would otherwise slip them.
+  id: 404
+  time: '2026-05-10T10:56:07.0000000+00:00'
