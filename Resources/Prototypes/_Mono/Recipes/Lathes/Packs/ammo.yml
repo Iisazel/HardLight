@@ -162,6 +162,7 @@
   - AmmoBox12_gaugeIncendiary
   - AmmoBox12_gaugePractice
   - AmmoBox12_gaugeUranium
+  - AmmoBox12_gaugeFlare
   - Magazine45_ACPSubMachineGunTopMountedFMJ
   - Magazine45_ACPSubMachineGunTopMountedEmpty
   - Magazine9x19mmSubMachineGunTopMountedFMJ
@@ -178,6 +179,10 @@
   - AmmoBox23x75mmFlashbang
   - AmmoBox23x75mmPractice
   - AmmoBox23x75mmUranium
+  - AmmoBoxSmallEmpty
+  - AmmoBoxMediumEmpty
+  - AmmoBoxLargeEmpty
+  - AmmoBoxShotgunEmpty
 
 #Uranium recipes
 
@@ -230,7 +235,7 @@
   - Magazine8x65mmEmpty
   - Magazine762x54mmREmpty
   - Magazine762x51mmEmpty
-  - Magazine12_gaugeEmpty 
+  - Magazine12_gaugeEmpty
   - Magazine45_ACPSubMachineGunTopMountedEmpty
   - Magazine9x19mmSubMachineGunTopMountedEmpty
   - Magazine57x28mmSubMachineGunTopMountedEmpty
@@ -381,6 +386,12 @@
   - AmmoBox762x51mmBigFMJ
   - AmmoBox762x54mmRBigFMJ
   - AmmoBox9x19mmBigFMJ
+  - AmmoBox45_ACPBigFMJ
+  - AmmoBox45_ACPBigPractice
+  - AmmoBox45_ACPBigRubber
+  - AmmoBox45_ACPBigIncendiary
+  - AmmoBox45_ACPBigUranium
+  - AmmoBox57x28mmBig
   - AmmoBox762x51mmRubberBig
   - AmmoBox762x39mmRubberBig
   - AmmoBox762x54mmRRubberBig
@@ -539,6 +550,10 @@
   - AmmoBox762x51mmBigFMJ
   - AmmoBox762x54mmRBigFMJ
   - AmmoBox9x19mmBigFMJ
+  - AmmoBox45_ACPBigFMJ
+  - AmmoBox45_ACPBigPractice
+  - AmmoBox45_ACPBigRubber
+  - AmmoBox57x28mmBig
   - AmmoBox762x51mmRubberBig
   - AmmoBox762x39mmRubberBig
   - AmmoBox762x54mmRRubberBig
@@ -557,6 +572,7 @@
   - Magazine45_ACPPistolIncendiary
   - Magazine45_ACPSubMachineGunIncendiary
   - AmmoBox45_ACPIncendiary
+  - AmmoBox45_ACPBigIncendiary
   - Magazine9x19mmPistolIncendiary
   - Magazine9x19mmSubMachineGunIncendiary
   - SpeedLoader9x19mmIncendiary
@@ -587,6 +603,7 @@
   - Magazine45_ACPPistolUranium
   - Magazine45_ACPSubMachineGunUranium
   - AmmoBox45_ACPUranium
+  - AmmoBox45_ACPBigUranium
   - Magazine9x19mmPistolUranium
   - Magazine9x19mmSubMachineGunUranium
   - SpeedLoader9x19mmUranium
